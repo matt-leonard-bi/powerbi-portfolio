@@ -1,6 +1,6 @@
 <title>Power BI Portfolio</title>
 <style>
-/* Layout: single narrow column, one project per section, screenshot above description, live-report link as primary action */
+/* Layout: single narrow column, one project per section, heading row with the live-report action, screenshot, then description beside a list */
 :root {
   --bg: #f6f8fa;
   --surface: #ffffff;
@@ -23,22 +23,30 @@
   --line: #2a3d49; --accent: #5fc3df; --accent-fg: #0b1a21; color-scheme: dark;
 }
 body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
-.wrap { max-width: 62rem; margin: 0 auto; padding-inline: 1rem; padding-block: 2.5rem 4rem; display: grid; gap: 3rem; }
+.wrap { max-width: 62rem; margin: 0 auto; padding-inline: 1rem; padding-block: 2.5rem 4rem; }
+header { padding-bottom: 3rem; }
 header h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; margin: 0 0 .75rem; text-wrap: balance; }
-header p { margin: 0; max-width: 42rem; color: var(--muted); font-size: 1.05rem; }
+header p { margin: 0; color: var(--muted); font-size: 1.05rem; }
+header .contact { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; margin-top: 1.25rem; color: var(--fg); font-size: .95rem; }
+header .contact a { color: var(--accent); }
+header .contact a:focus-visible { outline: 3px solid var(--fg); outline-offset: 2px; }
 .eyebrow { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 0 0 .5rem; }
-article { display: grid; gap: 1.25rem; }
+article { display: grid; gap: 1.25rem; padding-block: 3.5rem; border-top: 1px solid var(--line); }
+.head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+.head > div { min-width: 0; }
 article h2 { font-family: var(--font-display); font-size: 1.6rem; margin: 0; text-wrap: balance; }
 .shot { display: block; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); overflow: hidden; }
 .shot img { display: block; width: 100%; height: auto; }
+.hint { margin: -.5rem 0 0; font-size: .85rem; color: var(--muted); }
 .body { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 2rem; }
 .body p { margin: 0 0 1rem; }
+.body p:last-child { margin-bottom: 0; }
 .body h3 { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 .5rem; }
+.body h3 + ul { margin-bottom: 1.25rem; }
 .body ul { margin: 0; padding-left: 1.1rem; }
 .body li { margin-bottom: .25rem; }
-.cols { column-count: 2; column-gap: 1.5rem; }
-.btn { display: inline-block; background: var(--accent); color: var(--accent-fg); text-decoration: none; font-weight: 600; padding: .65rem 1.1rem; border-radius: 4px; }
-.btn:focus-visible { outline: 3px solid var(--fg); outline-offset: 2px; }
+.btn { display: inline-block; background: var(--accent); color: var(--accent-fg); text-decoration: none; font-weight: 600; padding: .65rem 1.1rem; border-radius: 4px; white-space: nowrap; }
+.btn:focus-visible, .shot:focus-visible { outline: 3px solid var(--fg); outline-offset: 2px; }
 .btn:hover { filter: brightness(1.1); }
 footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); padding-top: 1rem; }
 @media (max-width: 720px) { .body { grid-template-columns: minmax(0, 1fr); } }
@@ -47,22 +55,29 @@ footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line
 
 <div class="wrap">
   <header>
-    <p class="eyebrow">Power BI portfolio</p>
+    <p class="eyebrow">Matt Leonard · Power BI portfolio</p>
     <h1>Data modeling and reporting projects</h1>
-    <p>Two Power BI reports built on a synthetic manufacturer dataset. The first shows what a flat Excel source costs you. The second rebuilds it as a dimensional star schema on SQL Server. Each report is published and interactive.</p>
+    <p>Two Power BI reports built on a sample manufacturer dataset. The first starts from a flat Excel source and asks how to improve it. The second rebuilds the data as a dimensional star schema on SQL Server. Each report is published and interactive.</p>
+    <p class="contact">
+      <span>Matt Leonard</span>
+      <a href="mailto:matt_leonard@outlook.com">matt_leonard@outlook.com</a>
+      <a href="https://www.linkedin.com/in/matt-leonard-b2443b1/" target="_blank" rel="noopener">linkedin.com/in/matt-leonard-b2443b1</a>
+    </p>
   </header>
 
   <article>
-    <div>
-      <p class="eyebrow">Project 1 · Performance and design</p>
-      <h2>Northstar sales: flat model Excel source</h2>
+    <div class="head">
+      <div>
+        <p class="eyebrow">Project 1 · Performance and design</p>
+        <h2>Northstar sales: flat model Excel source</h2>
+      </div>
+      <a class="btn" href="https://app.powerbi.com/view?r=eyJrIjoiNjg1MDkyYjQtMGY2Ni00NzU2LWIxNzUtNmYyMjk2NTdhYTEyIiwidCI6IjFkMzNkMzNkLWU0OWEtNDhiNi1iZTE3LTIxOGY4ZmJjYWE0OSIsImMiOjZ9" target="_blank" rel="noopener">Open live report</a>
     </div>
-    <a class="shot" href="https://app.powerbi.com/view?r=eyJrIjoiNjg1MDkyYjQtMGY2Ni00NzU2LWIxNzUtNmYyMjk2NTdhYTEyIiwidCI6IjFkMzNkMzNkLWU0OWEtNDhiNi1iZTE3LTIxOGY4ZmJjYWE0OSIsImMiOjZ9"><img src="DemoDashboard.png" alt="Power BI dashboard showing total revenue, gross margin, orders, customers, revenue by month, rolling 12 month revenue, revenue by category and plant, and top customers"></a>
+    <a class="shot" href="https://app.powerbi.com/view?r=eyJrIjoiNjg1MDkyYjQtMGY2Ni00NzU2LWIxNzUtNmYyMjk2NTdhYTEyIiwidCI6IjFkMzNkMzNkLWU0OWEtNDhiNi1iZTE3LTIxOGY4ZmJjYWE0OSIsImMiOjZ9" target="_blank" rel="noopener"><img src="DemoDashboard.png" alt="Power BI dashboard showing total revenue, gross margin, orders, customers, revenue by month, rolling 12 month revenue, revenue by category and plant, and top customers"></a>
     <div class="body">
       <div>
         <p>A flat 50,000-row Excel spreadsheet of sample manufacturer sales data, loaded into Power BI as one wide table. This is how many analysts start. There are DAX measures for revenue, margin, customer ranking, rolling 12 month and year-over-year time intelligence which might have performance issues as the file size grows.</p>
         <p>The open question it poses is how to improve performance.</p>
-        <p><a class="btn" href="https://app.powerbi.com/view?r=eyJrIjoiNjg1MDkyYjQtMGY2Ni00NzU2LWIxNzUtNmYyMjk2NTdhYTEyIiwidCI6IjFkMzNkMzNkLWU0OWEtNDhiNi1iZTE3LTIxOGY4ZmJjYWE0OSIsImMiOjZ9" target="_blank" rel="noopener">Open live report</a></p>
       </div>
       <div>
         <h3>Ways to improve it</h3>
@@ -79,23 +94,29 @@ footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line
   </article>
 
   <article>
-    <div>
-      <p class="eyebrow">Project 2 · Data model</p>
-      <h2>Manufacturing star schema</h2>
+    <div class="head">
+      <div>
+        <p class="eyebrow">Project 2 · Data model</p>
+        <h2>Manufacturing star schema</h2>
+      </div>
+      <a class="btn" href="https://app.powerbi.com/view?r=eyJrIjoiZTVlMGY3ZTYtYWFmMy00ZGNhLWJhOTItMGI5MDcwZDdjZDFkIiwidCI6IjFkMzNkMzNkLWU0OWEtNDhiNi1iZTE3LTIxOGY4ZmJjYWE0OSIsImMiOjZ9" target="_blank" rel="noopener">Open live report</a>
     </div>
-    <a class="shot" href="https://app.powerbi.com/view?r=eyJrIjoiZTVlMGY3ZTYtYWFmMy00ZGNhLWJhOTItMGI5MDcwZDdjZDFkIiwidCI6IjFkMzNkMzNkLWU0OWEtNDhiNi1iZTE3LTIxOGY4ZmJjYWE0OSIsImMiOjZ9"><img src="DemoStarSchema.png" alt="Power BI model view showing three fact tables (production, quality, downtime) joined to date, plant, line, shift and product dimensions"></a>
+    <a class="shot" href="DemoStarSchema.png" target="_blank" rel="noopener"><img src="DemoStarSchema.png" alt="Power BI model view showing three fact tables (production, quality, downtime) joined to date, plant, line, shift and product dimensions"></a>
+    <p class="hint">Model view. Select the image to open it full size.</p>
     <div class="body">
       <div>
         <p>Designed a Power BI data model using a dimensional star schema for sample manufacturing data. Transformed source data in SQL Server to fact and dimension tables, established relationships and business-friendly reporting names, and developed a Power BI report and DAX measures for manufacturing analysis.</p>
         <p>The project demonstrates how properly modeled data can be a foundation for reliable reporting.</p>
-        <p><a class="btn" href="https://app.powerbi.com/view?r=eyJrIjoiZTVlMGY3ZTYtYWFmMy00ZGNhLWJhOTItMGI5MDcwZDdjZDFkIiwidCI6IjFkMzNkMzNkLWU0OWEtNDhiNi1iZTE3LTIxOGY4ZmJjYWE0OSIsImMiOjZ9" target="_blank" rel="noopener">Open live report</a></p>
       </div>
-      <div class="cols-wrap">
-        <h3>Tables</h3>
+      <div>
+        <h3>Fact tables</h3>
         <ul>
           <li>FactProduction</li>
           <li>FactQuality</li>
           <li>FactDowntime</li>
+        </ul>
+        <h3>Dimension tables</h3>
+        <ul>
           <li>DimDate</li>
           <li>DimPlant</li>
           <li>DimLine</li>
@@ -106,5 +127,5 @@ footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line
     </div>
   </article>
 
-  <footer>All data in these reports is synthetic and created for demonstration purposes.</footer>
+  <footer>All data in these reports is sample data created for demonstration purposes.</footer>
 </div>
