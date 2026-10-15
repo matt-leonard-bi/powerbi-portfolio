@@ -27,7 +27,7 @@ body { background: var(--bg); color: var(--fg); font-family: var(--font-body); f
 header { padding-bottom: 3rem; }
 header h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; margin: 0 0 .75rem; text-wrap: balance; }
 header p { margin: 0; color: var(--muted); font-size: 1.05rem; }
-header .contact { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; margin-top: 1.25rem; color: var(--fg); font-size: .95rem; }
+header .contact { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; margin: 0 0 1rem; color: var(--fg); font-size: .95rem; }
 header .contact a { color: var(--accent); }
 header .contact a:focus-visible { outline: 3px solid var(--fg); outline-offset: 2px; }
 .eyebrow { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 0 0 .5rem; }
@@ -38,7 +38,10 @@ article h2 { font-family: var(--font-display); font-size: 1.6rem; margin: 0; tex
 .shot { display: block; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); overflow: hidden; }
 .shot img { display: block; width: 100%; height: auto; }
 .hint { margin: -.5rem 0 0; font-size: .85rem; color: var(--muted); }
-.body { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 2rem; }
+.body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+.lists { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1.5rem; }
+.cols { column-count: 2; column-gap: 2rem; }
+.cols li { break-inside: avoid; }
 .body p { margin: 0 0 1rem; }
 .body p:last-child { margin-bottom: 0; }
 .body h3 { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 .5rem; }
@@ -49,20 +52,19 @@ article h2 { font-family: var(--font-display); font-size: 1.6rem; margin: 0; tex
 .btn:focus-visible, .shot:focus-visible { outline: 3px solid var(--fg); outline-offset: 2px; }
 .btn:hover { filter: brightness(1.1); }
 footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); padding-top: 1rem; }
-@media (max-width: 720px) { .body { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 560px) { .cols { column-count: 1; } }
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Source+Serif+4:wght@600&display=swap">
 
 <div class="wrap">
   <header>
     <p class="eyebrow">Matt Leonard · Power BI portfolio</p>
-    <h1>Data modeling and reporting projects</h1>
-    <p>Two Power BI reports built on a sample manufacturer dataset. The first starts from a flat Excel source and asks how to improve it. The second rebuilds the data as a dimensional star schema on SQL Server. Each report is published and interactive.</p>
     <p class="contact">
-      <span>Matt Leonard</span>
       <a href="mailto:matt_leonard@outlook.com">matt_leonard@outlook.com</a>
       <a href="https://www.linkedin.com/in/matt-leonard-b2443b1/" target="_blank" rel="noopener">linkedin.com/in/matt-leonard-b2443b1</a>
     </p>
+    <h1>Data modeling and reporting projects</h1>
+    <p>Two Power BI reports built on a sample manufacturer dataset. The first starts from a flat Excel source and asks how to improve it. The second rebuilds the data as a dimensional star schema on SQL Server. Each report is published and interactive.</p>
   </header>
 
   <article>
@@ -81,7 +83,7 @@ footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line
       </div>
       <div>
         <h3>Ways to improve it</h3>
-        <ul>
+        <ul class="cols">
           <li>Rewrite DAX measures</li>
           <li>Add a date table</li>
           <li>Move processing to Power Query</li>
@@ -108,21 +110,25 @@ footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line
         <p>Designed a Power BI data model using a dimensional star schema for sample manufacturing data. Transformed source data in SQL Server to fact and dimension tables, established relationships and business-friendly reporting names, and developed a Power BI report and DAX measures for manufacturing analysis.</p>
         <p>The project demonstrates how properly modeled data can be a foundation for reliable reporting.</p>
       </div>
-      <div>
-        <h3>Fact tables</h3>
-        <ul>
-          <li>FactProduction</li>
-          <li>FactQuality</li>
-          <li>FactDowntime</li>
-        </ul>
-        <h3>Dimension tables</h3>
-        <ul>
-          <li>DimDate</li>
-          <li>DimPlant</li>
-          <li>DimLine</li>
-          <li>DimShift</li>
-          <li>DimProduct</li>
-        </ul>
+      <div class="lists">
+        <div>
+          <h3>Fact tables</h3>
+          <ul>
+            <li>FactProduction</li>
+            <li>FactQuality</li>
+            <li>FactDowntime</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Dimension tables</h3>
+          <ul>
+            <li>DimDate</li>
+            <li>DimPlant</li>
+            <li>DimLine</li>
+            <li>DimShift</li>
+            <li>DimProduct</li>
+          </ul>
+        </div>
       </div>
     </div>
   </article>
